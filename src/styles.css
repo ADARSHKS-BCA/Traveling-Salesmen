@@ -1,0 +1,236 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Warm "paper & postcards" design system for the TSP journey.
+ * All colors are oklch tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 12px);
+  --radius-3xl: calc(var(--radius) + 20px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-honey: var(--honey);
+  --color-honey-foreground: var(--honey-foreground);
+  --color-sage: var(--sage);
+  --color-sage-foreground: var(--sage-foreground);
+  --color-berry: var(--berry);
+  --color-berry-foreground: var(--berry-foreground);
+  --color-sky: var(--sky);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Nunito", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --shadow-sticker: 0 2px 0 0 var(--ink-soft), 0 10px 24px -14px var(--ink-soft);
+  --shadow-lift: 0 18px 40px -26px var(--ink-soft);
+}
+
+:root {
+  --radius: 1rem;
+
+  --paper: oklch(0.968 0.018 84);
+  --paper-deep: oklch(0.938 0.03 80);
+  --ink: oklch(0.29 0.045 45);
+  --ink-soft: oklch(0.29 0.045 45 / 28%);
+
+  --background: oklch(0.968 0.018 84);
+  --foreground: oklch(0.29 0.045 45);
+  --card: oklch(0.99 0.012 88);
+  --card-foreground: oklch(0.29 0.045 45);
+  --popover: oklch(0.99 0.012 88);
+  --popover-foreground: oklch(0.29 0.045 45);
+
+  --primary: oklch(0.62 0.16 42);
+  --primary-foreground: oklch(0.985 0.012 88);
+  --secondary: oklch(0.93 0.036 82);
+  --secondary-foreground: oklch(0.34 0.05 45);
+  --muted: oklch(0.94 0.024 84);
+  --muted-foreground: oklch(0.52 0.038 55);
+  --accent: oklch(0.9 0.06 90);
+  --accent-foreground: oklch(0.32 0.05 45);
+  --destructive: oklch(0.58 0.19 25);
+  --destructive-foreground: oklch(0.985 0.012 88);
+
+  --border: oklch(0.86 0.035 76);
+  --input: oklch(0.86 0.035 76);
+  --ring: oklch(0.62 0.16 42);
+
+  --honey: oklch(0.79 0.14 78);
+  --honey-foreground: oklch(0.3 0.06 60);
+  --sage: oklch(0.66 0.09 155);
+  --sage-foreground: oklch(0.985 0.012 88);
+  --berry: oklch(0.56 0.16 355);
+  --berry-foreground: oklch(0.985 0.012 88);
+  --sky: oklch(0.7 0.1 235);
+
+  --gradient-sunrise: linear-gradient(135deg, var(--honey), var(--primary));
+  --gradient-paper: radial-gradient(
+    circle at 20% 10%,
+    color-mix(in oklab, var(--honey) 26%, transparent),
+    transparent 55%
+  ),
+  radial-gradient(circle at 85% 0%, color-mix(in oklab, var(--sky) 20%, transparent), transparent 50%);
+}
+
+.dark {
+  --paper: oklch(0.24 0.03 55);
+  --paper-deep: oklch(0.2 0.028 55);
+  --ink: oklch(0.95 0.02 85);
+  --ink-soft: oklch(0.1 0.02 55 / 60%);
+
+  --background: oklch(0.24 0.03 55);
+  --foreground: oklch(0.95 0.02 85);
+  --card: oklch(0.28 0.032 55);
+  --card-foreground: oklch(0.95 0.02 85);
+  --popover: oklch(0.28 0.032 55);
+  --popover-foreground: oklch(0.95 0.02 85);
+  --primary: oklch(0.72 0.15 45);
+  --primary-foreground: oklch(0.2 0.03 55);
+  --secondary: oklch(0.32 0.035 55);
+  --secondary-foreground: oklch(0.95 0.02 85);
+  --muted: oklch(0.32 0.035 55);
+  --muted-foreground: oklch(0.75 0.03 70);
+  --accent: oklch(0.36 0.05 70);
+  --accent-foreground: oklch(0.95 0.02 85);
+  --border: oklch(1 0 0 / 14%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.72 0.15 45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    background-image: var(--gradient-paper);
+    background-attachment: fixed;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.015em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--honey) 55%, transparent);
+  }
+}
+
+/* ---------- whimsical utilities ---------- */
+
+@utility paper-card {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-sticker);
+}
+
+@utility wobble-border {
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+@utility ink-underline {
+  background-image: linear-gradient(
+    to right,
+    color-mix(in oklab, var(--honey) 70%, transparent),
+    color-mix(in oklab, var(--honey) 70%, transparent)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 0.38em;
+  background-position: 0 88%;
+}
+
+@utility text-gradient-sunrise {
+  background: var(--gradient-sunrise);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+  50% {
+    transform: translateY(-8px) rotate(var(--tilt, 0deg));
+  }
+}
+
+@keyframes dash-travel {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+@utility animate-pop-in {
+  animation: pop-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility route-dash {
+  stroke-dasharray: 7 7;
+  animation: dash-travel 14s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
